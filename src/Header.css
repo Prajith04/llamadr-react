@@ -1,0 +1,30 @@
+h1 {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 48px; /* Increased font size */
+    font-weight: normal;
+    cursor: pointer;
+}
+
+h1:hover {
+    color: #007BFF;
+}
+
+nav {
+    background-color: #f8f9fa;
+    padding: 20px 40px; /* Increased padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: row; /* Center content vertically */
+}
+.header{
+    display: flex;
+    flex-direction: row;
+}
+.title{
+    padding:20px 40px;
+    font-weight: bold;
+}
