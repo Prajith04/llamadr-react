@@ -14,8 +14,7 @@ nav {
     background-color: #f8f9fa;
     padding: 20px 40px; /* Increased padding */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100vw; /* Full width */
-    height: 100vh; /* Full height */
+    width:200vh;
     display:flex;
     justify-content: space-evenly;
     flex-direction: row; /* Center content vertically */
