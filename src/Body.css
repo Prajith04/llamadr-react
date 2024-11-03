@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  html {
+    font-size: calc(100% + 0.5vw);
+    color: #fff;
+    background: linear-gradient( #402, #006);
+    background-attachment: fixed;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition-duration: 0.001s !important;
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @keyframes background-move {
+    0% {
+      background-position: 0 0, 0 0;
+    }
+    100% {
+      background-position: 100vw 0, 0 0;
+      background-position: max(100vw, 40em) 0, 0 0;
+    }
+  }
+  .input-group {
+    width: 100%;
+    max-width: 20em;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+  }
+  @supports (mix-blend-mode: darken) {
+    .input-group {
+      position: relative;
+      mix-blend-mode: lighten;
+    }
+    .input-group__label {
+      position: absolute;
+      left: 3em;
+      top: -0.28em;
+      background: #000;
+    }
+  }
+  .symptom-label {
+    padding: 0 0.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.1em;
+    color: #ccd;
+    color: rgba(255, 220, 255, 0.6);
+    cursor: pointer;
+  }
+  .symptom {
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    border-style: none;
+    outline: none;
+    height: calc(1em + 1.6em + 0.5em);
+    width: 100%;
+    padding: 0.8em 1em;
+    border: 0.25em solid transparent;
+    background-image: linear-gradient(#000, #000), linear-gradient(120deg, #f09 0%, #0ff 50%, #9f0 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 1.8em;
+    background-size: 200% 100%;
+    transition: background-position 0.8s ease-out;
+  }
+  .symptom:hover {
+    background-position: 100% 0;
+  }
+  .symtpom:focus {
+    outline: 2px dashed #ad2b89;
+    outline-offset: 0.5em;
+  }
+  .symptom-form{
+    width: 100vh;
+  }
+  
+  .glow-on-hover {
+    margin-left: 230px;
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin-top:20px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+.custom-checkbox{
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px solid #000;
+    width: fit-content;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #000;
+}
+.custom-checkbox input[type="checkbox"] {
+  display: none; /* Hides the checkbox */
+}
+.custom-checkbox label {
+  position: relative;
+  cursor: pointer;
+  padding-left: 25px; /* Space for the custom checkbox */
+  user-select: text; /* Allows text to be selectable */
+}
+.custom-checkbox input[type="checkbox"]:checked + label::before {
+  content: "✔"; /* Checkmark or any custom icon */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: green; /* Color for the checkmark */
+  font-size: 20px; /* Size of the checkmark */
+}
+.custom-checkbox label:hover {
+  color: blue; /* Change color on hover */
+}
+.symptoms-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
