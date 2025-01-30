@@ -104,7 +104,7 @@ function Body() {
     const handlellm = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyADY2LzO75rqkA2f91fjOhld_P96UQR5C8', {
+            const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBC5-u-5Snf_yynEMZdZbiboBvOEXb3Qj8', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
