@@ -104,14 +104,17 @@ function Body() {
     const handlellm = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBC5-u-5Snf_yynEMZdZbiboBvOEXb3Qj8', {
+           const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                 method: 'POST',
                 headers: {
+                    'Authorization': 'Bearer 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',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    contents: diseases.map(disease => ({
-                        parts: [{ text: `Explain the disease ${disease.Disease} and its treatments. ${userPrompt}` }]
+                    model: 'google/gemini-2.0-flash-thinking-exp:free',
+                    messages: diseases.map(disease => ({
+                        role: 'user',
+                        content: `Explain the disease ${disease.Disease} and its treatments. ${userPrompt}`
                     }))
                 })
             });
@@ -120,7 +123,7 @@ function Body() {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            setLlmResponse(data.candidates[0].content.parts[0].text); // Set the LLM response
+            setLlmResponse(data.choices[0].message.content); // Set the LLM response
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
