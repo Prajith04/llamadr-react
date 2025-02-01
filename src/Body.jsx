@@ -103,11 +103,12 @@ function Body() {
 
     const handlellm = async (event) => {
         event.preventDefault();
+        const api=process.env.API_URL;
         try {
             const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${process.env.API_URL}`, // Replace with your OpenAI API key
+                    'Authorization': `Bearer ${api}`, // Replace with your OpenAI API key
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
