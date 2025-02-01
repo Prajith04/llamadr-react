@@ -113,7 +113,7 @@ function Body() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: 'meta-llama/llama-3.2-90b-vision-instruct:free',
+                    model: 'meta-llama/llama-3.1-405b-instruct:free',
                     messages: diseases.map(disease => ({
                         role: 'user',
                         content: `Explain the disease ${disease.Disease} and its treatments. ${userPrompt}`
