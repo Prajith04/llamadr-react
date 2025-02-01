@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import  { useEffect } from 'react';
 import './Body.css';
+
 function Body() {
+    const api= import.meta.env.VITE_API_URL;
+    console.log(api);
     const [symptoms, setSymptoms] = useState('');
     const [matchingSymptoms, setMatchingSymptoms] = useState([]);
     const [selectedSymptoms, setSelectedSymptoms] = useState([]);
@@ -103,7 +106,6 @@ function Body() {
 
     const handlellm = async (event) => {
         event.preventDefault();
-        const api=process.env.API_URL;
         try {
             const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                 method: 'POST',
@@ -112,7 +114,7 @@ function Body() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: 'google/gemini-2.0-flash-thinking-exp:free',
+                    model: 'meta-llama/llama-3.2-11b-vision-instruct:free',
                     messages: diseases.map(disease => ({
                         role: 'user',
                         content: `Explain the disease ${disease.Disease} and its treatments. ${userPrompt}`
@@ -124,7 +126,7 @@ function Body() {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log(data.choices[0].message.content); // Log the LLM response
+            console.log(data); // Log the LLM response
             setLlmResponse(data.choices[0].message.content); // Set the LLM response
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
