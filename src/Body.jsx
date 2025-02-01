@@ -4,7 +4,6 @@ import './Body.css';
 
 function Body() {
     const api= import.meta.env.VITE_API_URL;
-    console.log(api);
     const [symptoms, setSymptoms] = useState('');
     const [matchingSymptoms, setMatchingSymptoms] = useState([]);
     const [selectedSymptoms, setSelectedSymptoms] = useState([]);
