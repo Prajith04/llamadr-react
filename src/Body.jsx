@@ -104,10 +104,9 @@ function Body() {
     const handlellm = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyADY2LzO75rqkA2f91fjOhld_P96UQR5C8', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${process.env.API_URL}`, // Replace with your OpenAI API key
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -123,8 +122,7 @@ function Body() {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log(data.choices[0].message.content); // Log the LLM response
-            setLlmResponse(data.choices[0].message.content); // Set the LLM response
+            setLlmResponse(data.candidates[0].content.parts[0].text); // Set the LLM response
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
